@@ -1,3 +1,19 @@
+char	*ft_strlowcase(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] >= 'A' && str[i] <= 'Z')
+		{
+			str[i] = str[i] + 32;
+		}
+		i++;
+	}
+	return (str);
+}
+
 int	is_alphanumeric(char c)
 {
 	if ((c >= 'a' && c <= 'z') || (c >= '0' && c <= '9'))

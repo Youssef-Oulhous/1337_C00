@@ -1,30 +1,23 @@
 #include <unistd.h>
 
-void ft_char(char c)
+void	ft_char(char c)
 {
-    write( 1, &c ,1);
+	write(1, &c, 1);
 }
 
-int main ( int argc , char **argv )
+int	main(int argc, char **argv)
 {
-    char nm[] = "";
-    int i = 0 ;
-    int j = 0 ;
-    if ( argc >= 1){
+	int	i;
 
-        while( argv[1][i] )
-        {
-            nm[i] = argv[1][i] ;
-           i++ ;
-        }
-    }
-
-    while(nm[j])
-    {
-       ft_char(nm[j]);
-       j++ ;
-
-    }
-
-    return 0 ;
+	i = 0;
+	if (argc >= 1)
+	{
+		while (argv[0][i])
+		{
+			ft_char(argv[0][i]);
+			i++;
+		}
+	}
+	write(1, "\n", 1);
+	return (0);
 }

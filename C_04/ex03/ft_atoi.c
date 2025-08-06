@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 int	ft_atoi(char *str)
 {
 	int	i;
@@ -21,4 +23,18 @@ int	ft_atoi(char *str)
 		i++;
 	}
 	return (result * sign);
+}
+
+
+int main(){
+
+		
+	char str[] = "  -+--+12 34,5abc" ;
+	
+	int res = ft_atoi(str);
+	
+	printf("%d",res);
+	
+	return 0 ;
+
 }

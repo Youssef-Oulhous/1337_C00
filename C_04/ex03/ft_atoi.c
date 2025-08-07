@@ -1,40 +1,38 @@
-#include <stdio.h>
+#include <unistd.h>
+
+int	whitespaces(char *str, int *ptr_i)
+{
+	int	count;
+	int	i;
+
+	i = 0;
+	count = 1;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	while (str[i] && (str[i] == 43 || str[i] == 45))
+	{
+		if (str[i] == 45)
+			count *= -1;
+		i++;
+	}
+	*ptr_i = i;
+	return (count);
+}
 
 int	ft_atoi(char *str)
 {
-	int	i;
 	int	sign;
 	int	result;
+	int	i;
 
-	i = 0;
-	sign = 1;
 	result = 0;
-	while (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
-		i++;
-	while (str[i] == '+' || str[i] == '-')
+	sign = whitespaces(str, &i);
+	while (str[i] && str[i] >= 48 && str[i] <= 57)
 	{
-		if (str[i] == '-')
-			sign *= -1;
+		result *= 10;
+		result += str[i] - 48;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		result = (result * 10) + (str[i] - '0');
-		i++;
-	}
-	return (result * sign);
-}
-
-
-int main(){
-
-		
-	char str[] = "  -+--+12 34,5abc" ;
-	
-	int res = ft_atoi(str);
-	
-	printf("%d",res);
-	
-	return 0 ;
-
+	result *= sign;
+	return (result);
 }
